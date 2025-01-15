@@ -19,8 +19,13 @@ session = cnx.session()
 #session = get_active_session()
 #erstellt den Frame "my_dataframe"
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'),col('SEARCH_ON'))
-st.dataframe(data=my_dataframe, use_container_width=True)
+#st.dataframe(data=my_dataframe, use_container_width=True)
+#st.stop()
+
+pd_df=my_dataframe.to_pandas()
+st.dataframe(pd_df)
 st.stop()
+
 
 #erstellt die auswahlliste, was eine Liste zusammenstellt
 ingredients_list=st.multiselect(
